@@ -1,3 +1,6 @@
+//moving text
+
+
 import React from 'react'
 
 function Hero() {

@@ -1,36 +1,31 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-  
-
-//   return (
-//     <>
-      
-//     </>
-//   )
-// }
-
-// export default App
-// src/App.jsx
-import { useState } from 'react';
+import { useState,useRef} from 'react';
 import './App.css';
 import Navbar from '../src/components/Navbar';
 import Hero from '../src/components/Hero';
-import Features from '../src/components/Features';
+import Carousel from '../src/components/Carousel';
+import { Routes } from 'react-router-dom';
+import About from './components/About';
 
 function App() {
+  const sectionRef = useRef(null);
+
+  const handleClick = () =>{
+    console.log("Button clicked")
+    sectionRef.current.scrollIntoView({behaviour:"smooth"})
+  }
+
   return (
+    // <Routes>
     <div className="app-container">
-      <Navbar />
+      <Navbar handleClick = {handleClick} />
       <Hero />
-      <Features />
+      <Carousel />
+      <About ref={sectionRef}/>
       <footer className="app-footer">
         <p>&copy; 2023 Agri Mitra. All rights reserved.</p>
       </footer>
     </div>
+    // {/* </Routes> */}
   );
 }
 
