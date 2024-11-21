@@ -26,6 +26,11 @@
     padding: 20px;
   }
   
+  .emptyArea{
+    /* empty area reuired to fit the navbar */
+    height: 105px;
+    
+  }
   .hero-section {
     background-color: #f4f4f4; /* Example color */
     padding: 20px;
@@ -36,7 +41,44 @@
     max-width: 100%;
     height:auto;
   } */
-  
+  .icon{
+    width: 75px;
+    height: 75px;
+    image-resolution: 10px;
+  }
+  .panel{
+    width: 30px;
+    height: 30px;
+    image-resolution: 10px;
+    border-radius: 50%;
+  }
+
+  .carousel-container {
+    position: relative;
+    overflow: hidden; /* Hide the overflow to show only one slide at a time */
+    width: 100%;
+}
+
+.carousel-inner {
+    display: flex; /* Use flexbox to arrange slides in a row */
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+}
+
+.carousel-item {
+    min-width: 100%; /* Each item takes full width */
+    box-sizing: border-box; /* Ensure padding/margin doesn't affect width */
+}
+
+.about-content1,.about-content2{
+  color: #4CAF50;
+}
+.about-flowchart{
+  border-radius: 50%;
+}
+.about-img{
+  border-radius: 50%;
+}
+
   .app-footer {
     background-color: #8f9396; /* Example color */
     color: white;

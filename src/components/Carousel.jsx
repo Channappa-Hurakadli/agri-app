@@ -1,44 +1,54 @@
 //slideshow
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Carousel() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const slides = [
+        { img: "/public/crop1.jpg", label: "First slide label", caption: "Some representative placeholder content for the first slide." },
+        { img: "/public/crop2.jpg", label: "Second slide label", caption: "Some representative placeholder content for the second slide." },
+        { img: "/public/crop3.jpg", label: "Third slide label", caption: "Some representative placeholder content for the third slide." },
+    ];
+    useEffect(()=>{
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+        },3000)
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    },[])
+
     return (
-        <div>
-            <div id="carouselExampleCaptions" className="carousel slide">
+        <div className='container p-5 mb-5'>
+            <h1>Spotlights</h1>
+             <div id="carouselExampleCaptions" className="carousel slide">
                 <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    {slides.map((_, index) => (
+                        <button
+                            key={index}
+                            type="button"
+                            data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide-to={index}
+                            className={currentIndex === index ? "active" : ""}
+                            aria-current={currentIndex === index}
+                            aria-label={`Slide ${index + 1}`}
+                        ></button>
+                    ))}
                 </div>
                 <div className="carousel-inner">
-                    <div className="carousel-item active ">
-                        <img src="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?cs=srgb&dl=pexels-alejandro-barron-21404-96715.jpg&fm=jpg" className="d-flex w-100 " alt="image1" />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                    {slides.map((slide, index) => (
+                        <div key={index} className={`carousel-item ${currentIndex === index ? "active" : ""}`}>
+                            <img src={slide.img} className="d-block w-100" alt={`image${index + 1}`} />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h5>{slide.label}</h5>
+                                <p>{slide.caption}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?cs=srgb&dl=pexels-alejandro-barron-21404-96715.jpg&fm=jpg" className="d-block w-100" alt="image2" />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg?cs=srgb&dl=pexels-alejandro-barron-21404-96715.jpg&fm=jpg" className="d-block w-100" alt="image3" />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" onClick={() => setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length)}>
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>
                 </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" onClick={() => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)}>
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                 </button>
