@@ -33,7 +33,7 @@ function Navbar(props) {
                         <a href=""><img src="/public/panelicon.webp" alt="" className='panel'/></a>
                         <i type="button" className="fa-solid fa-language fa-lg align-content-center"></i>
                         <i type="button" className="fa-solid fa-user fa-lg align-content-center"></i>
-                        <button type="button" className="btn btn-primary align-content-center"><Link to="/login">login</Link></button>
+                        <Link to="login"><button type="button" className="btn btn-primary align-content-center">Login</button></Link>
                         </ul>
                     </div>
                 </div>
