@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react'
 function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const slides = [
-        { img: "/public/crop1.jpg", label: "First slide label", caption: "Some representative placeholder content for the first slide." },
-        { img: "/public/crop2.jpg", label: "Second slide label", caption: "Some representative placeholder content for the second slide." },
-        { img: "/public/crop3.jpg", label: "Third slide label", caption: "Some representative placeholder content for the third slide." },
+        { img: "crop1.jpg", label: "First slide label", caption: "Some representative placeholder content for the first slide." },
+        { img: "crop2.jpg", label: "Second slide label", caption: "Some representative placeholder content for the second slide." },
+        { img: "crop3.jpg", label: "Third slide label", caption: "Some representative placeholder content for the third slide." },
     ];
     useEffect(()=>{
         const interval = setInterval(() => {

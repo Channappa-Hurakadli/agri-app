@@ -72,9 +72,21 @@
 .about-content1,.about-content2{
   color: #4CAF50;
 }
-.about-flowchart{
-  border-radius: 50%;
+.flowchart-img{
+  background-color: #4CAF50;
+  max-width: 30vh;
+  max-height: 30vh;
+  height: 40rem;
+
 }
+.about-flowchart{
+  /* border-radius: 50%; */
+  margin: -10rem 0 0 4rem; /*top right bottom left*/
+  max-width: 40vh;
+  max-height: 40vh;
+}
+  
+
 .about-img{
   border-radius: 50%;
 }
@@ -92,25 +104,11 @@
     width: 100%;
   }
 
-  .gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fccb90;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    }
-    
-    @media (min-width: 768px) {
-    .gradient-form {
-    height: 100vh !important;
-    }
-    }
-    @media (min-width: 769px) {
-    .gradient-custom-2 {
-    border-top-right-radius: .3rem;
-    border-bottom-right-radius: .3rem;
-    }
-    }
+input{
+  border: none;
+  border-radius: 1rem;
+}
+
+.navbar-txt{
+  font-size: 1.25rem;
+}

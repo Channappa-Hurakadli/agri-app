@@ -13,15 +13,16 @@ function LoginPage() {
                       background-image:url("https://img.freepik.com/premium-photo/tree-with-soil-growing-converging-point-computer-circuit-board-blue-light-wireframe-network-background-green-computing-green-technology_35691-13172.jpg");
                       background-size: cover;
                       background-repeat: no-repeat;
-                      height:100vh;
+                      
+                      
                       }
 
                   .bg-glass {
                       background-color: hsla(0, 0%, 100%, 0.5) !important; 
                       backdrop-filter: saturate(200%) blur(25px);
+                      
+                      
                   }
-                  
-}
               `}
           </style>
 

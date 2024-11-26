@@ -13,14 +13,17 @@ const About = forwardRef((props,ref) =>{
                         <p>Our mission is to provide the best possible experience for our customers.</p>
                         <p>Our values include innovation, quality, and customer satisfaction.</p>
                     </div>
-                        <img src="/public/abtIcon.webp" className='about-img w-25 h' alt="" />
+                        <img src="abtIcon.webp" className='about-img w-25 h' alt="" />
                 </div>
             {/* second paragraph  */}
             <div className="d-flex justify-content-around about-content2">
-                <div>
-                    <img src="/public/flowchart.webp" className='about-flowchart w-75 h-75' alt="" />
+                <div >
+                    <div className='flowchart-img'>
+                        
+                    </div>
+                    <img src="flowchart.webp" className='about-flowchart w-75 h-75' alt="" />
                 </div>
-                <div className="align-content-around about-content2">
+                <div className="align-content-around about-content2 mx-5">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure laudantium itaque laborum magnam reprehenderit quos explicabo quam id, hic dicta ipsam animi exercitationem?</p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure laudantium itaque laborum magnam reprehenderit quos explicabo quam id, hic dicta ipsam animi exercitationem?</p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure laudantium itaque laborum magnam reprehenderit quos explicabo quam id, hic dicta ipsam animi exercitationem?</p>
