@@ -17,7 +17,7 @@ function Carousel() {
     },[])
 
     return (
-        <div className='container p-5 mb-5'>
+        <div className='container carousel p-5 mb-5'>
             <h1>Spotlights</h1>
              <div id="carouselExampleCaptions" className="carousel slide">
                 <div className="carousel-indicators">

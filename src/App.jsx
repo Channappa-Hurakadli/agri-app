@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage';
 import Register from './components/Register';
 import Input from './components/Input';
 import Profile from './components/Profile';
+import Update from './components/Update';
 
 function App() {
   const aboutRef = useRef(null);
@@ -40,6 +41,7 @@ function App() {
           <Route path='/signup' element={<Register/>}/>
           <Route path="/input" element={<Input/>} />
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/update" element = {<Update/>}/>
           <Route exact path="/" element={
             <>
               <Hero />

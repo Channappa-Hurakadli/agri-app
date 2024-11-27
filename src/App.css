@@ -42,10 +42,17 @@
     height:auto;
   } */
   .icon{
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     image-resolution: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
   }
+
+  .icon:hover{
+    transform: scale(1.1);
+  }
+
   .panel{
     width: 30px;
     height: 30px;
@@ -70,7 +77,7 @@
 }
 
 .about-content1,.about-content2{
-  color: #4CAF50;
+  color: #333333;
 }
 .flowchart-img{
   background-color: #4CAF50;
@@ -84,6 +91,10 @@
   margin: -10rem 0 0 4rem; /*top right bottom left*/
   max-width: 40vh;
   max-height: 40vh;
+}
+.about-flowchart:hover{
+  transform: scale(1.1);
+  transition: 2s;
 }
   
 
@@ -111,4 +122,175 @@ input{
 
 .navbar-txt{
   font-size: 1.25rem;
+}
+h1,h3{
+  font-family: "Roboto Flex", sans-serif;
+  transition: font-size 0.5s ease-in-out;
+}
+
+h1:hover{
+  font-size: 3.5rem;
+}
+h3:hover{
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.right-nav{
+  font-size: 18px;
+  transition: font-size 0.3s ease-in-out;
+  color: black;
+
+}
+/* .right-nav:hover{
+  transform: scale(1.2);
+} */
+
+
+.nav-headers {
+  position: relative; /* Ensure positioning context for the pseudo-element */
+}
+
+.nav-headers a {
+  transition: font-size 0.25s ease-in-out; /* Apply transition for font size */
+  text-decoration: none; /* Remove the default underline */
+  position: relative; /* Position relative for the pseudo-element */
+  font-family: "Roboto Flex", sans-serif;
+
+}
+
+.nav-headers a::after {
+  content: ''; /* Create an empty content for the pseudo-element */
+  position: absolute; /* Position it absolutely */
+  left: 0; /* Start from the left */
+  bottom: -2px; /* Position it slightly below the text */
+  width: 100%; /* Make it full width */
+  height: 2px; /* Set the height of the underline */
+  background-color: currentColor; /* Use the text color for the underline */
+  transform: scaleX(0); /* Initially scale it to 0 (invisible) */
+  transition: transform 0.25s ease-in-out; /* Transition for the scale */
+}
+
+
+
+.nav-headers a:hover::after {
+  transform: scaleX(1); /* Scale it to full width on hover */
+}
+
+p,label{
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* profile */
+.profile-body{
+  /* background-color:#b1f3f4; */
+  background: linear-gradient(to right, #b1f3f4, #4CAF50); 
+}
+.profile-img{
+  height: 30vh;
+  width: 30vh;
+  border-radius: 50%;
+
+}
+.profile-img img{
+  height: 214.31px;
+  width: 214.31px;
+  border-radius: 50%;
+}
+.profile-info{
+  flex-basis: 50%;
+  /* border: 1px solid; */
+  align-items: center;
+  padding: 25px;
+  background: linear-gradient(to right, #b1f3f4, #4CAF50); 
+
+}
+.history{
+  flex-basis: 50%;
+  background-color: #eaefbd;
+  
+  align-content: center;
+}
+.profile{
+  height: 100vh;
+}
+
+.bar{
+  font-size: 24px;
+  cursor: pointer;
+}
+.bar:hover{
+  scale: (1.2);
+}
+.head{
+  flex-basis: 100%;
+}
+
+.camera{
+  font-size: 24px;
+  margin-top: -0.75rem;
+  background-color: aliceblue;
+  border-radius: 50%;
+}
+.nav{
+  font-size: 18px;
+}
+.profile-navbar {
+  max-height: 0; /* Initially hidden */
+  opacity: 0; /* Initially invisible */
+  overflow: hidden; /* Prevent overflow */
+  transition: max-height 0.3s ease, opacity 0.3s ease; /* Transition for max-height and opacity */
+  flex-basis: 10%;
+  
+}
+
+.profile-navbar.show {
+  max-height: 100%; /* Set a max height that accommodates the content */
+  opacity: 1; /* Fully visible */
+}
+
+/* update */
+
+.update-name{
+  width: 50%;
+}
+
+/* login page  */
+/* .bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.5) !important; 
+  backdrop-filter: saturate(200%) blur(25px);
+  
+} */
+ .login-box{
+  /* background-color: hsla(95, 88%, 48%, 0.5) !important;  */
+  background-color: rgb(226, 226, 223);
+  backdrop-filter: saturate(200%) blur(25px);
+  width: 75%;
+  box-shadow: 12px 3px 19px 4px rgba(0, 0, 0, 0.5);
+ }
+ .signup-box{
+  background-color: rgb(226, 226, 223);
+  backdrop-filter: saturate(200%) blur(25px);
+  /* width: 75%; */
+  box-shadow: 12px 3px 19px 4px rgba(0, 0, 0, 0.5);
+ }
+
+.login-body{
+  background-color: #c9e3ac;
+}
+.signup-body{
+  background-color: #c9e3ac;
+}
+
+/* update page  */
+
+.update-body{
+  background-color: #c9e3ac;
+
+}
+.update-body input{
+  background-color: #d9dbdc;
 }

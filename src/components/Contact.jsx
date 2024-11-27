@@ -5,7 +5,7 @@ const Contact = forwardRef((props,ref)=> {
     <div ref={ref} className='bg-body-tertiary'>
     <div className='contact p-5 container '>
       <h1>Contact Us</h1>
-        <div className="mb-3">
+        <div className="mb-3 mt-3">
             <label htmlFor="exampleFormControlInput1" className="form-label">Enter Your Email Adress</label>
             <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
         </div>

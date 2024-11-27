@@ -2,9 +2,10 @@ import React from 'react'
 
 function Input() {
   return (
+    <div>
+        <h1 className="mt-5 text-center">Enter the soil details</h1>
     <div className="bg-body-secondary">
       <div className='container input-cont m-5 p-3'>
-        <h1 className="mt-3 text-center">Enter the soil details</h1>
         <div className="d-flex justify-content-center align-content-center p-5 mx-5">
           <form action="" className="justify-content-center ">
             <div className="form-group container row">
@@ -47,7 +48,7 @@ function Input() {
         </div>
 
       </div>
-
+      </div>
     </div>
   )
 }
