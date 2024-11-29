@@ -42,10 +42,10 @@ function Navbar(props) {
                             <Link to="/input"><img src="/public/panelicon.webp" alt="" className='panel'  data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Input Panel" /></Link>
                            
                             {/* profile icon */}
-                            <Link to="/profile"><i type="button" className="fa-solid fa-user fa-lg align-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Profile" ></i></Link>
+                            <Link to="/profile"><i type="button" className="fa-solid fa-user fa-lg align-content-center"  ></i></Link>
 
-                            {/* language icon  */}
-                            <Link><i type="button" className="fa-solid fa-language fa-lg align-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Language"></i></Link>
+                            {/* language icon 
+                            <Link><i type="button" className="fa-solid fa-language fa-lg align-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Language"></i></Link> */}
 
                             {/* login button */}
                             <Link to="/login">

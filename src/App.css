@@ -210,10 +210,18 @@ p,label{
 }
 .history{
   flex-basis: 50%;
-  background-color: #eaefbd;
-  
-  align-content: center;
+  background-color: #d9ed92;
+  /* align-content: center; */
 }
+
+.query-card{
+  background-color: #dff4ce;
+  transition: all 0.5s ease-in-out;
+}
+.query-card:hover{
+  transform: scale(1.1);
+}
+
 .profile{
   height: 100vh;
 }
@@ -293,4 +301,10 @@ p,label{
 }
 .update-body input{
   background-color: #d9dbdc;
+}
+
+/* forgot password */
+.forgot-body{
+  background-color: #c9e3ac;
+  
 }

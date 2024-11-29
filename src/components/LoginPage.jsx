@@ -36,6 +36,8 @@ function LoginPage() {
                                   <div data-mdb-input-init className="form-outline mb-4">
                                       <input type="password" id="form3Example4" className="form-control bg-body-tertiary" />
                                       <label className="form-label" htmlFor="form3Example4">Password</label>
+                                      <Link className="d-block" to="/forgotpassword">forgot password?</Link>
+
                                   </div>
 
                                  
@@ -44,6 +46,7 @@ function LoginPage() {
                                   <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-4">
                                       Login
                                   </button>
+
 
                                   {/* <!-- Register buttons --> */}
                                   <div className="text-center">

@@ -12,6 +12,7 @@ import Register from './components/Register';
 import Input from './components/Input';
 import Profile from './components/Profile';
 import Update from './components/Update';
+import ForgotPassword from './components/ForgotPassword';
 
 function App() {
   const aboutRef = useRef(null);
@@ -42,6 +43,7 @@ function App() {
           <Route path="/input" element={<Input/>} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/update" element = {<Update/>}/>
+          <Route path='/forgotpassword' element={<ForgotPassword/>}/>
           <Route exact path="/" element={
             <>
               <Hero />

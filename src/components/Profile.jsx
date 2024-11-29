@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 function Profile() {
   const [bar, setBar] = useState(false);
   const [selectedImage, setSelectedImage] = useState("/profileImg.webp");
+  const queries = [{ query: "1st query", date: "12-09-2024" }, { query: "2nd query", date: "12-09-2024" }, { query: "3rd query", date: "12-09-2024" }]
+
+  const details = {name:"User name",email:"user email"}
 
   const handleClick = () => {
     setBar(!bar);
@@ -26,9 +29,9 @@ function Profile() {
       new bootstrap.Tooltip(tooltipTriggerEl);
     });
     // Cleanup function to dispose of tooltips
-  // return () => {
-  //   tooltips.forEach(tooltip => tooltip.dispose());
-  // };
+    // return () => {
+    //   tooltips.forEach(tooltip => tooltip.dispose());
+    // };
   }, []);
 
 
@@ -42,8 +45,8 @@ function Profile() {
         <h1 className="text-center head align-content-center text-start" >Profile</h1>
       </div>
 
-      {/* navbar division */}
       <div className="profile d-flex justify-content-between">
+        {/* navbar division */}
         <nav className={`navbar justify-content-start border bg-body-secondary align-content-start ${bar ? 'show' : ''} profile-navbar`}>
           <ul className="nav flex-column">
             {/* query */}
@@ -67,19 +70,19 @@ function Profile() {
               </div>
             </div>
 
-              {/* edit  */}
+            {/* edit  */}
             <li className="nav-item">
-                <Link className="nav-link" to="/update"><i className="fa-solid fa-pen-to-square" ></i></Link>
+              <Link className="nav-link" to="/update"><i className="fa-solid fa-pen-to-square" ></i></Link>
             </li>
             {/* logout  */}
             <li className="nav-item">
-                <Link className="nav-link" to=""><i className="fa-solid fa-right-from-bracket logout"></i></Link>
+              <Link className="nav-link" to=""><i className="fa-solid fa-right-from-bracket logout"></i></Link>
             </li>
 
             {/* settings */}
             <li className="nav-item">
               <Link className="nav-link" href="#"><i className="fa-solid fa-gear"></i></Link>
-              </li>
+            </li>
 
           </ul>
         </nav>
@@ -98,15 +101,28 @@ function Profile() {
             onChange={handleInput}
           />
           <div className=" d-flex flex-column">
-            <label htmlFor="name" className="text-start">Name : <span>Your name</span> </label>
+            <label htmlFor="name" className="text-start">Name : <span>{details.name}</span> </label>
             <br />
-            <label htmlFor="email">Email : <span>Your Email</span> </label>
+            <label htmlFor="email">Email : <span>{details.email}</span> </label>
           </div>
         </div>
 
         {/* history content  */}
-        <div className="history mx-3">
-          history
+        <div className="history mx-3 align-items-start p-5">
+          <h3 className="text-center mb-5">Your Queries</h3>
+          {queries.map((query) => {
+            return (
+              <div className="card w-75 mb-3" key={query.id}>
+                <div className="card-body query-card">
+                  <h5 className="card-title">{query.query}</h5>
+                  <p className="card-text">{query.date}</p>
+                  {/* <a href="#" className="btn btn-primary">Button</a> */}
+                </div>
+              </div>
+
+            );
+          })}
+
         </div>
 
       </div>
