@@ -13,6 +13,7 @@ import Input from './components/Input';
 import Profile from './components/Profile';
 import Update from './components/Update';
 import ForgotPassword from './components/ForgotPassword';
+import PageFooter from './components/PageFooter';
 
 function App() {
   const aboutRef = useRef(null);
@@ -35,6 +36,8 @@ function App() {
     <div className="app-container">
       
       <Navbar handleClick = {handleClick} />
+      <Hero />
+
        {/* <div className="emptyArea ">
         </div> */}
       <Routes>
@@ -46,16 +49,16 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword/>}/>
           <Route exact path="/" element={
             <>
-              <Hero />
               <Carousel />
               <About ref={aboutRef}/>
               <Services ref={serviceRef} />
-              <Contact ref={contactRef} />
+              {/* <Contact ref={contactRef} /> */}
             </>
           }/>
       </Routes>
       <footer className="app-footer">
-        <p>&copy; 2023 Agri Mitra. All rights reserved.</p>
+        {/* <p>&copy; 2023 Agri Mitra. All rights reserved.</p> */}
+        <PageFooter/>
       </footer>
     </div>
   );

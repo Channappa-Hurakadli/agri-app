@@ -36,7 +36,7 @@ function LoginPage() {
                                   <div data-mdb-input-init className="form-outline mb-4">
                                       <input type="password" id="form3Example4" className="form-control bg-body-tertiary" />
                                       <label className="form-label" htmlFor="form3Example4">Password</label>
-                                      <Link className="d-block" to="/forgotpassword">forgot password?</Link>
+                                      <Link className="d-block" to="/forgotpassword" data-bs-toggle="modal" data-bs-target="#staticBackdrop">forgot password?</Link>
 
                                   </div>
 
@@ -50,7 +50,7 @@ function LoginPage() {
 
                                   {/* <!-- Register buttons --> */}
                                   <div className="text-center">
-                                      <p>Don’t have an account yet?</p>
+                                      <p>Don't have an account yet?</p>
                                       <Link to="/signup">Sign Up</Link>
                                   </div>
                               </form>
@@ -59,6 +59,27 @@ function LoginPage() {
                   </div>
               </div>
           </div>
+          {/* <!-- Modal --> */}
+          <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabtabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="staticBackdropLabel">Verify Your Email</h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <label htmlFor="" className="form-label">Enter your email id</label>
+                                <input type="email" className="form-control" id="" />
+                                <label htmlFor="" className="form-label">Enter the code sent to your email</label>
+                                <input type="text" className="form-control" id="" />
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal" >Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
       </section>
       {/* <!-- Section: Design Block --> */}
   </div>

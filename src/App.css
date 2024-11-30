@@ -105,11 +105,11 @@
   .app-footer {
     background-color: #8f9396; /* Example color */
     color: white;
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     align-items: center;
-    padding: 10px 0;
-    position: relative;
+    padding: 10px;
+    /* position: relative; */
     bottom: 0;
     min-height: 20vh;
     width: 100%;
@@ -123,7 +123,7 @@ input{
 .navbar-txt{
   font-size: 1.25rem;
 }
-h1,h3{
+h1,h3,h2,h5{
   font-family: "Roboto Flex", sans-serif;
   transition: font-size 0.5s ease-in-out;
 }
@@ -251,7 +251,7 @@ p,label{
   opacity: 0; /* Initially invisible */
   overflow: hidden; /* Prevent overflow */
   transition: max-height 0.3s ease, opacity 0.3s ease; /* Transition for max-height and opacity */
-  flex-basis: 10%;
+  flex-basis: 5%;
   
 }
 

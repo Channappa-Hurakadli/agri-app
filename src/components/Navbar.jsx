@@ -31,9 +31,9 @@ function Navbar(props) {
                             <li className="nav-item">
                                 <Link className="nav-link" onClick={(evt) => props.handleClick(evt, "services")} to="/">Services</Link>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" onClick={(evt) => props.handleClick(evt, "contact")} to="/">Contact</Link>
-                            </li>
+                            </li> */}
 
 
                         </ul>

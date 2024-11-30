@@ -6,7 +6,7 @@ function Profile() {
   const [selectedImage, setSelectedImage] = useState("/profileImg.webp");
   const queries = [{ query: "1st query", date: "12-09-2024" }, { query: "2nd query", date: "12-09-2024" }, { query: "3rd query", date: "12-09-2024" }]
 
-  const details = {name:"User name",email:"user email"}
+  const details = { name: "User name", email: "user email" }
 
   const handleClick = () => {
     setBar(!bar);
@@ -47,7 +47,7 @@ function Profile() {
 
       <div className="profile d-flex justify-content-between">
         {/* navbar division */}
-        <nav className={`navbar justify-content-start border bg-body-secondary align-content-start ${bar ? 'show' : ''} profile-navbar`}>
+        <nav className={`navbar bg-body-secondary  ${bar ? 'show' : ''} profile-navbar`}>
           <ul className="nav flex-column">
             {/* query */}
             <li className="nav-item">
@@ -59,11 +59,20 @@ function Profile() {
                 <h5 className="offcanvas-title" id="offcanvasRightLabel">Ask Query</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
+              {/* content  */}
               <div className="offcanvas-body p-3">
 
+                <div className="mb-3 mt-3">
+                  <label htmlhtmlFor="exampleFormControlInput1" className="form-label">Enter Your Email Adress</label>
+                  <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                </div>
+                <div className='mb-3'>
+                  <label htmlhtmlFor="mobile" className="form-label">Phone Number</label>
+                  <input type="text" className="form-control" id="mobile" placeholder="Enter Your Phone Number" />
+                </div>
                 <div className="mb-3">
-                  <label htmlFor="exampleFormControlTextarea1" className="form-label">Share Your Query</label>
-                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Enter Your Query</label>
+                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" minLength={25} ></textarea>
                 </div>
                 <button type="submit" className="btn btn-success">Submit</button>
 
@@ -71,9 +80,39 @@ function Profile() {
             </div>
 
             {/* edit  */}
+            {/* <!-- Button trigger modal --> */}
             <li className="nav-item">
-              <Link className="nav-link" to="/update"><i className="fa-solid fa-pen-to-square" ></i></Link>
+              <Link className="nav-link" to=""><i className="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></Link>
             </li>
+
+
+            {/* <!-- Modal --> */}
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Edit Details</h1>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body modal-dialog-scrollable">
+                    <div className="mb-3">
+                      <label htmlFor="changename" className="form-label">Enter Your Name</label>
+                      <input type="text" className="form-control" id="changename" placeholder="Enter The New Name" />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="changeimage" className="form-label">Choose Profile Image</label>
+                      <br />
+                      <input type="file" className="form-control" id="changeimage" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+                    </div>
+                  </div>
+
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* logout  */}
             <li className="nav-item">
               <Link className="nav-link" to=""><i className="fa-solid fa-right-from-bracket logout"></i></Link>
@@ -101,9 +140,9 @@ function Profile() {
             onChange={handleInput}
           />
           <div className=" d-flex flex-column">
-            <label htmlFor="name" className="text-start">Name : <span>{details.name}</span> </label>
+            <label htmlhtmlFor="name" className="text-start">Name : <span>{details.name}</span> </label>
             <br />
-            <label htmlFor="email">Email : <span>{details.email}</span> </label>
+            <label htmlhtmlFor="email">Email : <span>{details.email}</span> </label>
           </div>
         </div>
 
