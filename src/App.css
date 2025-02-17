@@ -4,14 +4,29 @@
     padding: 0;
    
   }
-  
+  .profile-container {
+    width: 450px;
+    height: 700px;
+}
   .app-header {
     background-color: #4CAF50; /* Example color */
     color: white;
     padding: 20px;
     text-align: center;
   }
-  
+  .form-control1 {
+    border-radius: 5px; 
+    width: 245px; 
+    /* Adjust the value as needed */
+  }
+  .history1{
+    flex-basis: 79%;
+    background-color: #d9ed92;
+  }
+  .my-element1::-webkit-scrollbar {
+    width: 0px;  /* Hide vertical scrollbar */
+    height: 0px; /* Hide horizontal scrollbar */
+  }
   .app-header nav ul {
     list-style-type: none;
     padding: 0;
@@ -42,8 +57,8 @@
     height:auto;
   } */
   .icon{
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     image-resolution: 10px;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
@@ -120,6 +135,12 @@ input{
   border-radius: 1rem;
 }
 
+
+.colorVer:hover
+  {
+    background-color: rgb(17, 158, 158);
+    border-radius:15px;
+  }
 .navbar-txt{
   font-size: 1.25rem;
 }
@@ -185,6 +206,7 @@ p,label{
 }
 
 /* profile */
+
 .profile-body{
   /* background-color:#b1f3f4; */
   background: linear-gradient(to right, #b1f3f4, #4CAF50); 

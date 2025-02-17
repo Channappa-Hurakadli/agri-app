@@ -36,7 +36,7 @@ function Carousel() {
                 <div className="carousel-inner">
                     {slides.map((slide, index) => (
                         <div key={index} className={`carousel-item ${currentIndex === index ? "active" : ""}`}>
-                            <img src={slide.img} className="d-block w-100" alt={`image${index + 1}`} />
+                            <img src={slide.img} width={500} className="d-block w-100" alt={`image${index + 1}`} />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>{slide.label}</h5>
                                 <p>{slide.caption}</p>

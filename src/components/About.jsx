@@ -7,11 +7,15 @@ const About = forwardRef((props,ref) =>{
         <div ref={ref} className="bg-body-tertiary" >
         <div className="about container p-5">
             <h1>About Us</h1>
-               <div className="d-flex justify-content-around my-5 text-wrap ">
-                    <div className="align-content-center about-content1">
-                        <p>Welcome to our innovative platform dedicated to sustainable agriculture and advanced farming solutions.</p>
-                        <p>Our mission is to empower farmers with data-driven insights to improve soil health, boost crop productivity, and ensure environmental sustainability</p>
-                        <p>Leveraging machine learning models like Random Forest and SVM, we predict optimal crops based on soil parameters and climatic conditions.</p>
+               <div className="d-flex justify-content-around text-wrap ">
+                    <div className="mt-2">
+                        <p style={{fontWeight:"bold"}}>Welcome to our innovative platform dedicated to sustainable agriculture and advanced farming solutions.</p>
+                        <p>Our mission is to empower farmers with data-driven insights to improve soil health, increase crop productivity,
+                             and ensure environmental sustainability. We leverage machine learning models like Random Forest and SVM to predict 
+                             optimal crops based on soil parameters and climatic conditions. By combining advanced technology with agricultural
+                              expertise, we help farmers make informed decisions. Our solutions aim to optimize resource usage, reduce waste,
+                               and promote sustainable farming practices.
+                             Ultimately, we strive to build a resilient agricultural ecosystem for future generations.</p>
                     </div>
                         <img src="abtIcon.webp" className='about-img w-25 h' alt="" />
                 </div>

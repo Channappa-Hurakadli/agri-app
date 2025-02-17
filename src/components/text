@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="animated-text">
+    Our mission is to empower farmers with data-driven insights to improve soil health, increase crop productivity, and ensure environmental sustainability.
+  </div>
+</div>
+.container {
+    height: 100vh; /* Just to create a scrolling effect */
+  }
+  
+  .animated-text {
+    opacity: 0; /* Initially hidden */
+    transform: translateX(-100%); /* Start off-screen */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for both opacity and position */
+  }
+  
+  /* This class will be added when the element is in the viewport */
+  .in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  // Initialize the Intersection Observer
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view"); // Add class when element is in view
+        observer.unobserve(entry.target); // Stop observing the element once it’s in view
+      }
+    });
+  }, { threshold: 0.5 }); // Trigger when 50% of the element is in the viewport
+  
+  // Target the element to observe
+  const animatedText = document.querySelector('.animated-text');
+  observer.observe(animatedText);
+    

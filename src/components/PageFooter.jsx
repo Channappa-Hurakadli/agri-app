@@ -3,7 +3,7 @@ import React from 'react'
 function PageFooter() {
     return (
         <div className='container'>
-            <h2>Project Title : <span className="" style={{color:'green'}}>Krishi Sethu</span></h2>
+            <h2 className="text-center">Project Title : <span className="">Krishi Sethu</span></h2>
             <h2>Project Team</h2>
             <ul className="row">
                 <li className="col-3">

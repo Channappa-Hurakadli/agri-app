@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function ForgotPassword() {
+    const[newPassword,setnewPassword]=useState("");
+    const [confirmPassword,setconfirmPassowrd]=useState("");
+    const handleonChange1=(e)=>
+    {
+         setnewPassword(e.target.value);
+    }
+    const handleOnchnage2=(e)=>
+    {
+        setconfirmPassowrd(e.target.value);
+    }
+    const handleSubmit=(e)=>
+    {
+        
+    }
+
     return (
         <div className="forgot-body">
             <div className='container d-flex justify-content-around align-items-center p-5 '>
@@ -13,14 +28,15 @@ function ForgotPassword() {
                         <div className="card-body px-4 py-5 px-md-5">
                             <form>
                                 {/* <!-- Email input --> */}
+                                
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="password" id="newPassword" className="form-control bg-body-tertiary" />
+                                    <input type="password" id="newPassword" onChange={handleonChange1} value={newPassword} className="form-control bg-body-tertiary" />
                                     <label className="form-label" htmlFor="newPassword">New Password</label>
                                 </div>
 
                                 {/* <!-- Password input --> */}
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="password" id="confirmPassword" className="form-control bg-body-tertiary" />
+                                    <input type="password" id="confirmPassword" onChange={handleOnchnage2} value={confirmPassword} className="form-control bg-body-tertiary" />
                                     <label className="form-label" htmlFor="confirmPassword">Confirm Password</label>
                                 </div>
 

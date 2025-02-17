@@ -1,10 +1,85 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from "axios"
+import summary from "../helper/summary"
+import { FaCamera } from "react-icons/fa";
 
 function Profile() {
   const [bar, setBar] = useState(false);
   const [selectedImage, setSelectedImage] = useState("/profileImg.webp");
-  const queries = [{ query: "1st query", date: "12-09-2024" }, { query: "2nd query", date: "12-09-2024" }, { query: "3rd query", date: "12-09-2024" }]
+  const navigate=useNavigate();
+  const [eries1,setQueries1]=useState([]);
+  const queries = [{ query1: "1st query", date: "12-09-2024" }, { query1: "2nd query", date: "12-09-2024" }, { query1: "3rd query", date: "12-09-2024" }]
+  const[user,setUser]=useState(
+    {
+      name:"user name",
+      email:"user email",
+      role:"user role",
+      Image_url:""
+    }
+  )
+
+  const[queryDel,setQueryDel]=useState(
+    {
+      email:"",
+      phone:"",
+      suggestInfo:""
+    }
+  )
+  //function for ftching the user detail
+  const userDetail=async()=>
+    {
+        const userData=await axios({
+                method:summary.userDetails.method,
+                url:summary.userDetails.url,
+                headers: {
+                    "Content-Type": "application/json", 
+                },
+                withCredentials: true} )
+        
+        // console.log(data1);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+        if(userData?.data?.error==true)
+        {
+           navigate('/login');
+           return;
+           
+        }
+        const data1=userData?.data?.data;
+        setUser({name:data1?.name,email:data1?.email,
+            role:data1?.role,Image_url:data1?.Image_url });
+        if (user?.Image_url) {
+          setSelectedImage(user?.Image_url);
+        }
+    }
+    //function for fetching individual query
+    const individualQuery=async()=>
+      {
+        const query=await axios({
+          method:summary.getIndQuer.method,
+          url:summary.getIndQuer.url,
+          headers: {
+            "Content-Type": "application/json", 
+        },
+        withCredentials: true,
+        data:JSON.stringify({email:user?.email})
+        })
+        // console.log(query);
+        if(query.data?.error)
+        {
+          console.log();
+        }
+        else{
+          setQueries1(query?.data?.data);
+        }
+       
+
+      } 
+
+    useEffect(()=>
+    {
+      userDetail();
+      individualQuery();
+    },[user])
 
   const details = { name: "User name", email: "user email" }
 
@@ -24,15 +99,40 @@ function Profile() {
   }
   useEffect(() => {
     // Initialize tooltips
+    
     const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.forEach(tooltipTriggerEl => {
       new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+     });
+     
     // Cleanup function to dispose of tooltips
     // return () => {
     //   tooltips.forEach(tooltip => tooltip.dispose());
     // };
   }, []);
+  const handleOnChange1=(e)=>
+  {
+    setQueryDel({...queryDel,[e.target.name]:e.target.value});
+  }
+  const handleQuerySubmit=async()=>
+  {
+    const response=await axios(
+      {
+        method:summary.queryStore.method,
+        url:summary.queryStore.url,
+        headers: {
+          "Content-Type": "application/json", 
+      },
+      withCredentials: true,
+      data:JSON.stringify(queryDel)
+
+      }
+    )
+    const offcanvasElement = document.querySelector("#offcanvasRight");
+    const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+    offcanvasInstance.hide();
+    console.log(response);
+  }
 
 
 
@@ -45,7 +145,7 @@ function Profile() {
         <h1 className="text-center head align-content-center text-start" >Profile</h1>
       </div>
 
-      <div className="profile d-flex justify-content-between">
+      <div className="profile d-flex">
         {/* navbar division */}
         <nav className={`navbar bg-body-secondary  ${bar ? 'show' : ''} profile-navbar`}>
           <ul className="nav flex-column">
@@ -60,21 +160,21 @@ function Profile() {
                 <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               {/* content  */}
-              <div className="offcanvas-body p-3">
+              <div className="offcanvas-body p-3" id="offcanvasRight">
 
                 <div className="mb-3 mt-3">
-                  <label htmlhtmlFor="exampleFormControlInput1" className="form-label">Enter Your Email Adress</label>
-                  <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                  <label htmlFor="exampleFormControlInput1" className="form-label">Enter Your Email Adress</label>
+                  <input type="email" name='email' value={queryDel.email} onChange={handleOnChange1} className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
                 </div>
                 <div className='mb-3'>
-                  <label htmlhtmlFor="mobile" className="form-label">Phone Number</label>
-                  <input type="text" className="form-control" id="mobile" placeholder="Enter Your Phone Number" />
+                  <label htmlFor="mobile" className="form-label">Phone Number</label>
+                  <input type="text" name='phone' value={queryDel.phone} onChange={handleOnChange1} className="form-control" id="mobile" placeholder="Enter Your Phone Number" />
                 </div>
                 <div className="mb-3">
-                  <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Enter Your Query</label>
-                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" minLength={25} ></textarea>
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">Enter Your Query</label>
+                  <textarea className="form-control" name='suggestInfo' value={queryDel.suggestInfo} onChange={handleOnChange1} id="exampleFormControlTextarea1" rows="3" minLength={25} ></textarea>
                 </div>
-                <button type="submit" className="btn btn-success">Submit</button>
+                <button onClick={handleQuerySubmit} type="submit" className="btn btn-success">Submit</button>
 
               </div>
             </div>
@@ -127,11 +227,13 @@ function Profile() {
         </nav>
 
         {/* profile image content */}
-        <div className="profile-info mx-3 d-flex  flex-column">
-          <div className="profile-img">
+        {/* profile-info */}
+        <div className=" mx-3 my-3 d-flex  flex-column " style={{width:"400px",height:"662px",backgroundColor:"#ACDF87",paddingTop:"15px", paddingLeft:"20px",paddingRight:"15px"}}>
+          <div className="profile-img" style={{width:"100%",display:"flex",justifyContent:"center"}}>
             <img src={selectedImage} alt="profile Image" className="border image " />
           </div>
-          <i className="fa-solid fa-camera camera mb-3" onClick={handleCameraClick}></i>
+          {/* <i style={{position:"relative",bottom:"18px"}} className="fa-solid fa-camera camera mb-3" onClick={handleCameraClick}></i> */}
+          <FaCamera size={25} style={{position:"relative",bottom:"46px",left:"168px"}} onClick={handleCameraClick}/>
           <input
             type="file"
             id="imageInput"
@@ -139,28 +241,40 @@ function Profile() {
             style={{ display: 'none' }} // Hide the file input
             onChange={handleInput}
           />
-          <div className=" d-flex flex-column">
-            <label htmlhtmlFor="name" className="text-start">Name : <span>{details.name}</span> </label>
-            <br />
-            <label htmlhtmlFor="email">Email : <span>{details.email}</span> </label>
+          <div className=" d-flex flex-column gap-2">
+            <label htmlFor="name" className='d-flex'><div style={{width:"70px"}}>Name : </div><div>{user?.name}</div> </label>
+            <label htmlFor="email" className='d-flex'><div style={{width:"70px"}}>Email :</div> <div>{user?.email}</div> </label>
+            <label htmlFor="role" className='d-flex'><div style={{width:"70px"}}>Role :</div> <div>{user?.role}</div> </label>
+          </div>
+          <div className='mt-10' style={{marginTop:"30px"}}>
+          <div style={{fontWeight:"bold",padding:"10px 30px"}}>Don't go where the path may lead, go instead where there is no path and leave a trail." — Ralph Waldo Emerson</div>
+<div>Emerson encourages students to be bold and original in their thinking. Don’t just follow the crowd—create your own path and make your own mark.</div>
+
           </div>
         </div>
 
         {/* history content  */}
-        <div className="history mx-3 align-items-start p-5">
+        <div className="history1 my-element1 mx-3 align-items-start p-5 my-3" style={{overflow:"hidden",overflowY:"scroll"}}>
           <h3 className="text-center mb-5">Your Queries</h3>
-          {queries.map((query) => {
+          {
+          eries1.length>0 ? (
+          eries1.map((query,index) => {
             return (
-              <div className="card w-75 mb-3" key={query.id}>
+              <div className="card  ml-3 mb-3" style={{width:"70% "}} key={index}>
                 <div className="card-body query-card">
-                  <h5 className="card-title">{query.query}</h5>
-                  <p className="card-text">{query.date}</p>
+                <p className="card-text">Email : {query.email}</p>
+                  {/* <h5 className="card-title">{query.phone}</h5> */}
+                  <p className="card-text">query : {query.suggestInfo}</p>
+                  <p className="card-text">{query.created_at}</p>
                   {/* <a href="#" className="btn btn-primary">Button</a> */}
                 </div>
               </div>
 
             );
-          })}
+          })):(
+           <><div style={{backgroundColor:"white",textAlign:"center",padding:"6px 2px"}}> NO data is found</div></>
+            
+          )}
 
         </div>
 
